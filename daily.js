@@ -2474,8 +2474,12 @@ function GetCookie() {
                 var CookieValue = CV.match(/pt_key=.+?;/)[0] + CV.match(/pt_pin=.+?;/)[0];
                 var CK1 = $nobyda.read("CookieJD");
                 var CK2 = $nobyda.read("CookieJD2");
+                var CK3 = $nobyda.read("CookieJD3");
+                var CK4 = $nobyda.read("CookieJD4");
                 var AccountOne = CK1 ? CK1.match(/pt_pin=.+?;/) ? CK1.match(/pt_pin=(.+?);/)[1] : null : null;
                 var AccountTwo = CK2 ? CK2.match(/pt_pin=.+?;/) ? CK2.match(/pt_pin=(.+?);/)[1] : null : null;
+                var Account3 = CK3 ? CK3.match(/pt_pin=.+?;/) ? CK2.match(/pt_pin=(.+?);/)[1] : null : null;
+                var Account4 = CK4 ? CK4.match(/pt_pin=.+?;/) ? CK2.match(/pt_pin=(.+?);/)[1] : null : null;
                 var UserName = CookieValue.match(/pt_pin=(.+?);/)[1];
                 var DecodeName = decodeURIComponent(UserName);
                 if (!AccountOne || UserName == AccountOne) {
@@ -2484,6 +2488,12 @@ function GetCookie() {
                 } else if (!AccountTwo || UserName == AccountTwo) {
                     var CookieName = " [账号二] ";
                     var CookieKey = "CookieJD2";
+                } else if (!Account3 || UserName == Account3) {
+                    var CookieName = " [账号三] ";
+                    var CookieKey = "CookieJD3";
+                } else if (!Account4 || UserName == Account4) {
+                    var CookieName = " [账号四] ";
+                    var CookieKey = "CookieJD4";
                 } else {
                     $nobyda.notify("更新京东Cookie失败", "非历史写入账号 ‼️", '请开启脚本内"DeleteCookie"以清空Cookie ‼️');
                     return;
